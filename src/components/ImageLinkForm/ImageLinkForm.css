@@ -1,0 +1,22 @@
+.form {
+  width: 700px;
+  margin-top: 4rem;
+}
+
+#ip1 {
+  background-color: #fffffe;
+  border: none;
+  border-radius: 25px;
+}
+
+.button {
+  background-color: #fffffe;
+  border: none;
+  margin-left: 1rem;
+  border-radius: 25px;
+}
+
+.button:hover {
+  background-color: #eebbc3 ;
+  transition: 0.7s;
+}
