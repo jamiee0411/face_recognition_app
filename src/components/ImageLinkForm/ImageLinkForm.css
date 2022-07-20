@@ -1,12 +1,15 @@
 .form {
   width: 700px;
-  margin-top: 4rem;
 }
 
 #ip1 {
   background-color: #fffffe;
   border: none;
   border-radius: 25px;
+}
+
+input:focus, textarea {
+  outline: none;
 }
 
 .button {

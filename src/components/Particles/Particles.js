@@ -34,10 +34,6 @@ import { loadFull } from "tsparticles";
               enable: true,
               mode: "push",
             },
-            onHover: {
-              enable: true,
-              mode: "repulse",
-            },
             resize: true,
           },
           modes: {
@@ -52,10 +48,10 @@ import { loadFull } from "tsparticles";
         },
         particles: {
           color: {
-            value: "#ffffff",
+            value: "#eebbc3",
           },
           links: {
-            color: "#ffffff",
+            color: "#eebbc3",
             distance: 150,
             enable: true,
             opacity: 0.5,
