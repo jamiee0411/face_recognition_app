@@ -7,14 +7,14 @@ class Signin extends React.Component {
       signInEmail: '',
       signInPassword: ''
     }
-  }
+  };
 
   onEmailChange = (event) => {
     this.setState({signInEmail: event.target.value})
-  }
+  };
   onPasswordChange = (event) => {
     this.setState({signInPassword: event.target.value})
-  }
+  };
 
   onSubmitSignIn = () => {
     fetch('http://localhost:3000/signin', {
@@ -26,18 +26,26 @@ class Signin extends React.Component {
       })
     })
       .then(response => response.json())
-      .then(data => {
-        if (data === 'success') {
+      .then(user => {
+        if (user.id) { // does this user exist? did we recieve a user with a propery of id?
+          this.props.loadUser(user);
           this.props.onRouteChange('home');
         }
       })
-  }
+  };
 
+  // ties onSubmitSignIn to enter key press
+  handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+        this.onSubmitSignIn()
+    }
+  }
+  
   render() {
     const { onRouteChange } = this.props;
     return (
       <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
-        <main className="pa4 near-white">
+        <main className="pa4 near-white" onKeyPress={this.handleKeyPress}>
           <div className="measure">
             <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
               <legend className="f1 fw6 ph0 mh0">Sign In</legend>
@@ -66,11 +74,16 @@ class Signin extends React.Component {
               <input 
                 onClick={this.onSubmitSignIn}
                 className="b ph3 pv2 input-reset ba near-white bg-transparent grow pointer f5 dib" 
-                type="submit" value="Sign in" 
+                type="submit" 
+                value="Sign in" 
               />
             </div>
             <div className="lh-copy mt3">
-              <p onClick={() => onRouteChange('register')} href="#0" className="f5 link dim near-white db pointer">Register</p>
+              <p 
+                onClick={() => onRouteChange('register')} 
+                href="#0" 
+                className="f5 link dim near-white db pointer">Register
+              </p>
             </div>
           </div>
         </main>
